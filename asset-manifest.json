@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bazar/static/css/main.59daefca.css",
+    "main.js": "/bazar/static/js/main.6dd6f8dc.js",
+    "index.html": "/bazar/index.html",
+    "main.59daefca.css.map": "/bazar/static/css/main.59daefca.css.map",
+    "main.6dd6f8dc.js.map": "/bazar/static/js/main.6dd6f8dc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59daefca.css",
+    "static/js/main.6dd6f8dc.js"
+  ]
+}
