@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden; /* prevents scroll */
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  background-color: #54408c;
+  height: 100vh;
+  width: 100%;
+}
+
+.logoimagebox {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* OnBoarding */
+.container2 {
+  padding: 13px 28px 14px 27px;
+  height: 100vh;
+}
+/* .content {
+  background-color: red;
+} */
+.onBoardingImageContainer {
+  display: flex;
+  justify-content: center;
+}
+.onBoardingImage {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1/1;
+}
+.skip {
+  color: #54408c;
+  width: 100%;
+  cursor: pointer;
+  margin-left: 9.375%;
+  margin-top: 24px;
+  font-size: 14px;
+  margin-bottom: 21px;
+}
+.OnBoardingHeading {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -3%;
+  padding-bottom: 12px;
+  text-align: center;
+}
+.descOnBoarding {
+  margin: 0 auto;
+  color: #a6a6a6;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.dotone {
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+}
+.OnBoardingButtons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.continueButton {
+  background-color: #54408c;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  max-width: 327px;
+  aspect-ratio: 327/56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  line-height: 150%;
+}
+.signinButton {
+  color: #54408c;
+  cursor: pointer;
+}
+/* Signin */
+.container3 {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container3Head {
+  max-width: 327px;
+  position: relative;
+  left: -10px;
+  width: 100%;
+}
+.back {
+  margin-left: 9.375%;
+  padding-bottom: 16px;
+}
+/* greetings */
+.greetings {
+  margin-bottom: 24px;
+}
+.greetingHeading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+span {
+  color: #a6a6a6;
+  /* text-align: center; */
+  margin: 6px auto;
+}
+.input {
+  border: none;
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: fit-content;
+  font-size: 16px;
+  width: 100%;
+  max-width: 327px;
+}
+/* Email */
+.email,
+.name {
+  margin-bottom: 16px;
+}
+/* password */
+.eyeContainer {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.eye-icon {
+  position: relative;
+  right: 30px;
+}
+.eye-icon:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+  border-radius: 35%;
+  padding: 1px;
+}
+input::placeholder {
+  color: #a6a6a6;
+  font-size: 16px;
+}
+/* forget password */
+.forgetPassword {
+  cursor: pointer;
+  color: #54408c;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+/* login */
+.login,
+.register,
+.send,
+.getStarted {
+  cursor: pointer;
+  background-color: #54408c;
+  width: fit-content;
+  padding: 12px 141px;
+  color: white;
+  border-radius: 48px;
+  margin-bottom: 24px;
+}
+/* sign up */
+.signUp {
+  text-align: center;
+  font-family: "Roboto", san-serif;
+}
+span.signupcolor {
+  cursor: pointer;
+  color: #54408c;
+}
+.OrWith {
+  text-align: center;
+  margin: 24px;
+}
+/* other apps */
+.otherApps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.otherAppsContent {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  border-radius: 56px;
+  border: 1px solid #d6e4de;
+  padding: 12px 85px;
+  gap: 16px;
+  cursor: pointer;
+}
+.registration {
+  text-align: center;
+  margin-top: 138px;
+  color: #a6a6a6;
+}
+.termsAndPolicy {
+  text-align: center;
+  color: #54408c;
+  font-weight: 600;
+}
+/* register Button in signUp page */
+.register {
+  margin-top: 24px;
+}
+input {
+  /* background-color: red; */
+  margin-top: 6px;
+}
