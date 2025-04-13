@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [data, setData] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  // Fetch users data from Firebase
+  useEffect(() => {
+    axios
+      .get("https://bazar-7752a-default-rtdb.firebaseio.com/User.json")
+      .then((response) => setData(response.data))
+      .catch((error) => setError("Failed to load user data"));
+  }, []);
 
   const goBack = () => {
     navigate("/");
@@ -12,16 +25,42 @@ const SignIn = () => {
   const goToSignUp = () => {
     navigate("/signup");
   };
+
   const forgetpass = () => {
     navigate("/forgetpass");
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if the provided email and password match any user data
+    const user = Object.values(data).find(
+      (user) => user.email === email && user.password === password,
+    );
+
+    if (user) {
+      console.log("User authenticated:", user);
+      // Redirect to dashboard or homepage after successful login
+      navigate("/homepage");
+    } else {
+      setError(`Invalid Email or Password`);
+    }
+  };
+
   return (
     <div className="container3">
+      {/* Display error if any */}
+      {error && (
+        <div style={{ color: "red" }} className="error">
+          {error}
+        </div>
+      )}
+
       <div className="container3Head">
         <img
           style={{ cursor: "pointer" }}
           src="images/signin/back.png"
-          alt=""
+          alt="Back"
           onClick={goBack}
         />
         <div className="greetings">
@@ -30,10 +69,17 @@ const SignIn = () => {
         </div>
         <br />
       </div>
-      <form>
+
+      <form onSubmit={handleSubmit}>
         <div className="email">
           <div>Email</div>
-          <input className="input" type="text" placeholder="Your email" />
+          <input
+            className="input"
+            type="text"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="password">
           <div>Password</div>
@@ -42,11 +88,13 @@ const SignIn = () => {
               className="input"
               type={showPassword ? "text" : "password"}
               placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <img
               className="eye-icon"
               src="images/signin/Password-Outline.png"
-              alt=""
+              alt="Toggle Password Visibility"
               onClick={() => setShowPassword((prev) => !prev)}
             />
           </div>
@@ -54,7 +102,9 @@ const SignIn = () => {
         <div className="forgetPassword" onClick={forgetpass}>
           Forget Password
         </div>
-        <div className="login">Login</div>
+        <button style={{ border: "none" }} type="submit" className="login">
+          Login
+        </button>
         <div className="signUp">
           <span>Don’t have an account?</span>
           <span className="signupcolor" onClick={goToSignUp}>
@@ -66,11 +116,11 @@ const SignIn = () => {
         </div>
         <div className="otherApps">
           <div className="otherAppsContent">
-            <img src="images/signin/Google-logo.png" alt="" />
+            <img src="images/signin/Google-logo.png" alt="Google Logo" />
             <div>Sign in with Google</div>
           </div>
           <div className="otherAppsContent">
-            <img src="images/signin/Apple-logo.png" alt="" />
+            <img src="images/signin/Apple-logo.png" alt="Apple Logo" />
             <div>Sign in with Apple</div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const SignUp = () => {
   const navigate = useNavigate();
 
@@ -15,7 +15,6 @@ const SignUp = () => {
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-
     const hasNum = /[0-9]/.test(value);
     const hasLetter = /[a-zA-Z]/.test(value);
 
@@ -27,14 +26,33 @@ const SignUp = () => {
   const goBack = () => navigate("/");
   const goToSignIn = () => navigate("/signin");
 
-  const goToCongrats = () => {
+  const goToCongrats = (e) => {
+    e.preventDefault();
+
     if (!name.trim() || !email.trim()) {
       alert("Please fill Name and Email.");
       return;
     }
 
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValid) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     if (lengthValid && numLettValid && caseValid) {
-      navigate("/signupcongrats");
+      const user = { name, email, password: inputValue };
+
+      axios
+        .post("https://bazar-7752a-default-rtdb.firebaseio.com/User.json", user)
+        .then(() => {
+          alert("User data submitted successfully");
+          navigate("/signupcongrats");
+        })
+        .catch((err) => {
+          console.error("Submission failed:", err);
+          alert("Something went wrong. Please try again.");
+        });
     } else {
       alert("Please make sure your password meets all requirements.");
     }
@@ -55,7 +73,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <form>
+      <form onSubmit={goToCongrats}>
         <div className="name">
           <div>Name</div>
           <input
@@ -71,7 +89,7 @@ const SignUp = () => {
           <div>Email</div>
           <input
             className="input"
-            type="mail"
+            type="email"
             placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -125,7 +143,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="register" onClick={goToCongrats}>
+        <div type="submit" className="register">
           Register
         </div>
 
