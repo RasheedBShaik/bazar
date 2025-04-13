@@ -25,10 +25,9 @@ body {
 .container2 {
   padding: 13px 28px 14px 27px;
   height: 100vh;
+  margin-left: 10px;
 }
-/* .content {
-  background-color: red;
-} */
+
 .onBoardingImageContainer {
   display: flex;
   justify-content: center;
@@ -102,6 +101,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 }
 .container3Head {
   max-width: 327px;
@@ -155,9 +155,6 @@ span {
 }
 .eye-icon:hover {
   cursor: pointer;
-  background-color: gainsboro;
-  border-radius: 35%;
-  padding: 1px;
 }
 input::placeholder {
   color: #a6a6a6;
