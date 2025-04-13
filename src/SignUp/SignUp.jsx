@@ -143,9 +143,9 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div type="submit" className="register">
+        <button style={{ border: "none" }} type="submit" className="register">
           Register
-        </div>
+        </button>
 
         <div className="signUp">
           <span>Have an account? </span>
