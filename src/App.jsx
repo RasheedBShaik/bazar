@@ -64,6 +64,6 @@ function App() {
     </Router>
   );
 }
-<script>location.replace("/your-repo-name")</script>;
+<script>location.replace("/bazar")</script>;
 
 export default App;
