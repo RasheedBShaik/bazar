@@ -48,7 +48,7 @@ const MainContent = () => {
 };
 function App() {
   return (
-    <Router>
+    <Router basename="bazar">
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/signin" element={<SignIn />} />
@@ -64,5 +64,6 @@ function App() {
     </Router>
   );
 }
+<script>location.replace("/your-repo-name")</script>;
 
 export default App;
