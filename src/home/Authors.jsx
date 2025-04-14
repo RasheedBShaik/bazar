@@ -17,7 +17,7 @@ const Authors = () => {
             onClick={goBack}
           />
         </div>
-        <div className="headhome">Vendors</div>
+        <div className="headhome">Authors</div>
         <div>
           <img src="images/homepage/notification.png" alt="" />
         </div>
