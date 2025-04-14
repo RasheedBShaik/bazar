@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 body {
-  overflow: hidden; /* prevents scroll */
+  /* overflow: hidden; */
+  /* prevents scroll */
   font-family: "Open Sans", sans-serif;
 }
 
@@ -26,6 +27,7 @@ body {
   padding: 13px 28px 14px 27px;
   height: 100vh;
   margin-left: 10px;
+  overflow: hidden;
 }
 
 .onBoardingImageContainer {
