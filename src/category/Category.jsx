@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Category = () => {
-  const location = useLocation();
   return (
-    <div>
+    <div className="container3">
       <div className="bottomBar">
         {/* Home */}
         <Link to="/home" className="bottomBarItem">
@@ -41,7 +40,7 @@ const Category = () => {
             <img src={"images/homepage/bottombar/Cart-Fill.png"} alt="Cart" />
             <div
               style={{
-                color: location.pathname === "cart" ? "" : "#A6A6A6",
+                color: "#A6A6A6",
               }}>
               Cart
             </div>
@@ -57,7 +56,7 @@ const Category = () => {
             />
             <div
               style={{
-                color: location.pathname === "profile" ? "" : "#A6A6A6",
+                color: "#A6A6A6",
               }}>
               Profile
             </div>

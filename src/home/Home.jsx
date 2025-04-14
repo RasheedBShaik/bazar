@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const location = useLocation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -19,16 +18,16 @@ const Home = () => {
       setCurrentIndex(index);
     }, 3000);
 
-    return () => clearInterval(interval); // cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
-  const [active, setActive] = useState("home");
+
   return (
     <div className="container3">
       <div className="homeHead">
         <div>
           <img src="images/homepage/search.png" alt="" />
         </div>
-        <div className="headhome">HOME</div>
+        <div className="headhome">Home</div>
         <div>
           <img src="images/homepage/notification.png" alt="" />
         </div>
@@ -86,8 +85,10 @@ const Home = () => {
       </div>
       <div className="HomeBody">
         <div className="HomeHeading">
-          <div>Top of the Week</div>
-          <div className="HomeHeadingSeeAll">See all</div>
+          <div>Top of Week</div>
+          <Link to="/topofweek" className="HomeHeadingSeeAll">
+            See all
+          </Link>
         </div>
         <div className="AllBooks">
           <div className="book">
@@ -111,7 +112,9 @@ const Home = () => {
 
         <div className="HomeHeading">
           <div>Best Vendors</div>
-          <div className="HomeHeadingSeeAll">See all</div>
+          <Link to="/vendors" className="HomeHeadingSeeAll">
+            See all
+          </Link>
         </div>
 
         <div className="AllVendors">
@@ -126,14 +129,13 @@ const Home = () => {
           <div className="vendor">
             <img src="images/homepage/vendors/vendor3.png" alt="" />
           </div>
-          <div className="vendor">
-            <img src="images/homepage/vendors/vendor4.png" alt="" />
-          </div>
         </div>
 
         <div className="HomeHeading">
           <div>Authors</div>
-          <div className="HomeHeadingSeeAll">See all</div>
+          <Link to="/authors" className="HomeHeadingSeeAll">
+            See all
+          </Link>
         </div>
         <div className="AllAuthors">
           <div className="author">
@@ -142,13 +144,13 @@ const Home = () => {
             <div className="authorSpeciality">Writer</div>
           </div>
 
-          <div className="book">
+          <div className="author">
             <img src="images/homepage/authors/author2.png" alt="" />
             <div className="AuthorName">Tess Gunty</div>
             <div className="authorSpeciality">Novelist</div>
           </div>
 
-          <div className="book">
+          <div className="author">
             <img src="images/homepage/authors/author3.png" alt="" />
             <div className="AuthorName">Richard Perston</div>
             <div className="authorSpeciality">Writer</div>
@@ -159,7 +161,7 @@ const Home = () => {
       <div className="bottomBar">
         {/* Home */}
         <Link to="/home" className="bottomBarItem">
-          <div className="bottomBarItem" onClick={() => setActive("home")}>
+          <div className="bottomBarItem">
             <div className="bottomBarItemHome">
               <img
                 src={"images/homepage/bottombar/Home-Fill2.png"}
@@ -167,7 +169,7 @@ const Home = () => {
               />
               <div
                 style={{
-                  color: active === "home" ? "#54408C" : "#A6A6A6",
+                  color: "#54408C",
                 }}>
                 Home
               </div>
@@ -185,7 +187,7 @@ const Home = () => {
               />
               <div
                 style={{
-                  color: active === "category" ? "#54408C" : "#A6A6A6",
+                  color: "#A6A6A6",
                 }}>
                 Category
               </div>
@@ -197,17 +199,10 @@ const Home = () => {
         <Link to="/cart" className="bottomBarItem">
           <div className="bottomBarItem">
             <div className="bottombarItemCart">
-              <img
-                src={
-                  active === "cart"
-                    ? "images/homepage/bottombar/Cart-Fill2.png"
-                    : "images/homepage/bottombar/Cart-Fill.png"
-                }
-                alt="Cart"
-              />
+              <img src={"images/homepage/bottombar/Cart-Fill.png"} alt="Cart" />
               <div
                 style={{
-                  color: location.pathname === "cart" ? "" : "#A6A6A6",
+                  color: "#A6A6A6",
                 }}>
                 Cart
               </div>
@@ -220,15 +215,12 @@ const Home = () => {
           <div className="bottomBarItem">
             <div className="bottombarItemProfile">
               <img
-                src={
-                  // active === "profile"
-                  "images/homepage/bottombar/Profile-Fill.png"
-                }
+                src={"images/homepage/bottombar/Profile-Fill.png"}
                 alt="Profile"
               />
               <div
                 style={{
-                  color: location.pathname === "profile" ? "" : "#A6A6A6",
+                  color: "#A6A6A6",
                 }}>
                 Profile
               </div>

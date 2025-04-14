@@ -19,9 +19,13 @@ import ForgetPass from "./SignIn/ForgetPass";
 import ChangePass from "./SignIn/ChangePass";
 import PasswordChangedCongrats from "./SignIn/PasswordChangedCongrats";
 import Home from "./home/Home";
-import Profile from "./home/Profile";
-import Cart from "./home/Cart";
-import Category from "./home/Category";
+import Vendors from "./home/Vendors";
+import Authors from "./home/Authors";
+import Profile from "./profile/Profile";
+import Cart from "./cart/Cart";
+import Category from "./category/Category";
+import TopOfWeek from "./home/TopOfWeek";
+
 const MainContent = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -67,6 +71,9 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="cart" element={<Cart />} />
         <Route path="category" element={<Category />} />
+        <Route path="vendors" element={<Vendors />} />
+        <Route path="authors" element={<Authors />} />
+        <Route path="topofweek" element={<TopOfWeek />} />
       </Routes>
     </Router>
   );

@@ -1,11 +1,9 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const location = useLocation();
-
   return (
-    <div>
+    <div className="container3">
       <div className="bottomBar">
         {/* Home */}
         <Link to="/home" className="bottomBarItem">
@@ -24,11 +22,7 @@ const Cart = () => {
         <Link to="/Category" className="bottomBarItem">
           <div className="bottombarItemCategory">
             <img
-              src={
-                // active === "category"
-                // ? "images/homepage/bottombar/Menu-Fill2.png"
-                "images/homepage/bottombar/Menu-Fill.png"
-              }
+              src={"images/homepage/bottombar/Menu-Fill.png"}
               alt="Category"
             />
             <div
@@ -50,7 +44,7 @@ const Cart = () => {
               />
               <div
                 style={{
-                  color: location.pathname === "cart" ? "" : "#54408C",
+                  color: "#54408C",
                 }}>
                 Cart
               </div>
@@ -68,7 +62,7 @@ const Cart = () => {
               />
               <div
                 style={{
-                  color: location.pathname === "profile" ? "" : "#A6A6A6",
+                  color: "#A6A6A6",
                 }}>
                 Profile
               </div>
