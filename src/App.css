@@ -228,3 +228,146 @@ input {
   /* background-color: red; */
   margin-top: 6px;
 }
+/* homeComponent */
+.homeHead {
+  max-width: 375px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headhome {
+  font-size: 20px;
+  font-weight: bold;
+}
+/* carousel */
+.carousel-item.active {
+  display: flex;
+  gap: 70px;
+}
+.carousel-item {
+  display: none;
+}
+.Homecarousel {
+  background-color: #faf9fd;
+  display: flex;
+  /* justify-content: space-between; */
+  height: 146px;
+  /* width: 100%; */
+  /* max-width: 327px; */
+  margin-bottom: 8px;
+}
+.HomecarouselContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 23px;
+}
+.HomecarouselImage {
+  margin-right: 23px;
+}
+.carouselOffer {
+  font-size: 20px;
+  font-weight: bold;
+}
+.carouselOrder {
+  cursor: pointer;
+  background-color: #54408c;
+  width: fit-content;
+  padding: 8px 24px;
+  color: white;
+  border-radius: 48px;
+  margin-bottom: 24px;
+}
+/* dots */
+.HomecarouselDots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  align-items: center;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #e5def8;
+}
+
+.dot.active {
+  color: #54408c;
+
+  font-size: 24px;
+}
+.HomeBody {
+  width: 100%;
+  max-width: 351px;
+  overflow: hidden;
+}
+.HomeHeading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 20px;
+}
+.HomeHeadingSeeAll {
+  color: #54408c;
+}
+.AllBooks,
+.AllVendors,
+.AllAuthors {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+.BookPrice {
+  color: #54408c;
+  margin-top: 4px;
+  font-weight: bold;
+}
+.AllVendors {
+  justify-content: space-between;
+}
+.vendor {
+  background-color: #faf9fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* max-width: 80; */
+}
+.BookName,
+.AuthorName {
+  width: 126px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+}
+.authorSpeciality {
+  color: #a6a6a6;
+  margin-top: 4px;
+}
+.bottomBar {
+  margin: 0 auto;
+  background-color: #faf9fd;
+  max-width: 327px;
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  height: 83px;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 135%;
+}
+.bottomBarItem {
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  /* color: #a6a6a6; */
+  /* object-fit: cover; */
+}

@@ -19,6 +19,9 @@ import ForgetPass from "./SignIn/ForgetPass";
 import ChangePass from "./SignIn/ChangePass";
 import PasswordChangedCongrats from "./SignIn/PasswordChangedCongrats";
 import Home from "./home/Home";
+import Profile from "./home/Profile";
+import Cart from "./home/Cart";
+import Category from "./home/Category";
 const MainContent = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -60,7 +63,10 @@ function App() {
           path="passwordchangedcongrats"
           element={<PasswordChangedCongrats />}
         />
-        <Route path="homepage" element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="category" element={<Category />} />
       </Routes>
     </Router>
   );
