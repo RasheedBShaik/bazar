@@ -226,7 +226,6 @@ span.signupcolor {
   margin-top: 24px;
 }
 input {
-  /* background-color: red; */
   margin-top: 6px;
 }
 /* homeComponent */
@@ -247,7 +246,6 @@ input {
   gap: 70px;
   max-width: 375px;
   width: 375px;
-  background-color: green;
   aspect-ratio: 327/146;
 }
 .carousel-item {
@@ -441,26 +439,41 @@ input {
 @media (max-width: 480px) {
   .bookInTopOfWeek,
   .vendorDetails {
-    /* aspect-ratio: auto; or remove entirely */
     max-height: none;
   }
 }
 
 @media (max-width: 400px) {
   .carousel-item.active {
-    background-color: red;
     width: 140px;
     gap: 20px;
     margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
   }
   .carouselOrder {
-    background-color: gold;
     padding: 2px 3px;
+    margin-top: 30px;
+    text-align: center;
+    width: 140px;
   }
   .HomeBody {
     margin-top: 20px;
   }
   .otherAppsContent {
     font-size: 12px;
+  }
+  .AllAuthors,
+  .AllVendors,
+  .AllBooks {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dot.active {
+    margin-top: 30px;
+  }
+  .HomecarouselContent {
+    margin-left: 0;
   }
 }
