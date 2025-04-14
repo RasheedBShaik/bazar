@@ -51,7 +51,7 @@ const SignIn = () => {
 
     if (user) {
       console.log("User authenticated:", user);
-      navigate("/homepage");
+      navigate("/home");
     } else {
       setError("Invalid email or password.");
     }
