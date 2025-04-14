@@ -450,7 +450,6 @@ input {
     margin-left: 5px;
     display: flex;
     flex-direction: column;
-    background-color: red;
   }
   .carouselOrder {
     padding: 2px 3px;
