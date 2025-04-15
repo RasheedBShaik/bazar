@@ -24,13 +24,7 @@ const Home = () => {
   return (
     <div className="container3">
       <div className="homeHead">
-        <div>
-          <img src="images/homepage/search.png" alt="" />
-        </div>
         <div className="headhome">Home</div>
-        <div>
-          <img src="images/homepage/notification.png" alt="" />
-        </div>
       </div>
       {/* Carousel */}
       <div className="Homecarousel">

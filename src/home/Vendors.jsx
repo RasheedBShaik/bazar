@@ -24,8 +24,8 @@ const Vendors = () => {
       </div>
 
       <div className="pageHead">
-        <div className="pageName">Check the authors</div>
-        <div className="pageHeading">Authors</div>
+        <div className="pageName">Our Vendors</div>
+        <div className="pageHeading">vendors</div>
       </div>
       <div className="AllVendors">
         <div className="vendorDetails">

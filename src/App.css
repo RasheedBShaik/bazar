@@ -89,7 +89,7 @@ body {
   justify-content: center;
   border-radius: 12px;
   font-size: 16px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2992px;
   line-height: 150%;
 }
 .signinButton {
@@ -103,6 +103,8 @@ body {
   align-items: center;
   justify-content: center;
   margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
 }
 .container3Head {
   max-width: 327px;
@@ -232,13 +234,19 @@ input {
 .homeHead {
   max-width: 375px;
   width: 100%;
+  margin-right: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  position: fixed;
+  top: 0px;
+  padding-top: 10px;
+  background-color: white;
   align-items: center;
 }
 .headhome {
   font-size: 20px;
   font-weight: bold;
+  margin-bottom: 22px;
 }
 /* carousel */
 .carousel-item.active {
@@ -252,6 +260,7 @@ input {
   display: none;
 }
 .Homecarousel {
+  margin-top: 49px;
   background-color: #faf9fd;
   display: flex;
   margin-bottom: 8px;
@@ -302,6 +311,7 @@ input {
   width: 100%;
   max-width: 351px;
   overflow: hidden;
+  padding-bottom: 83px;
 }
 .HomeHeading {
   display: flex;
@@ -315,7 +325,6 @@ input {
   color: #54408c;
   cursor: pointer;
   text-decoration: none;
-  /* text-decoration: dashed; */
 }
 .AllBooks,
 .AllVendors,
@@ -328,6 +337,12 @@ input {
   color: #54408c;
   margin-top: 4px;
   font-weight: bold;
+}
+.CategoryPrice {
+  color: #54408c;
+  margin-top: 4px;
+  font-weight: bold;
+  width: 100%;
 }
 .AllVendors {
   justify-content: space-between;
@@ -352,9 +367,9 @@ input {
 .bottomBar {
   margin: 0 auto;
   background-color: #faf9fd;
-  max-width: 327px;
+  max-width: 375px;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 0.7504px;
   display: flex;
   height: 83px;
   align-items: center;
@@ -362,6 +377,9 @@ input {
   font-size: 12px;
   font-weight: bold;
   line-height: 135%;
+  position: fixed;
+  inset: 0;
+  top: auto;
 }
 .bottomBarItem {
   text-align: center;
@@ -374,21 +392,22 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  max-width: 327px;
+  max-width: 375px;
   justify-content: space-around;
 }
 .bookInTopOfWeek,
-.vendorDetails {
+.vendorDetails,
+.categoryItem {
   display: flex;
   flex-direction: column;
   flex: 3 1 30%;
   aspect-ratio: 198/127;
-  max-height: 198px;
   width: 100%;
   max-width: 127px;
   justify-content: center;
   align-items: center;
 }
+
 .AllVendors {
   flex-wrap: 3 0 30%;
   gap: 45px;
@@ -400,6 +419,24 @@ input {
   justify-content: space-between;
   align-items: center;
 }
+.AllCategories {
+  margin-top: 49px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 375px;
+  margin-bottom: 83px;
+
+  justify-content: space-around;
+}
+.categoryName {
+  width: 100%;
+}
+.categoryItem {
+  width: 100%;
+  max-width: 158px;
+  max-height: 214px;
+}
 .vendorImage {
   height: 30px;
   width: 70px;
@@ -410,6 +447,7 @@ input {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  margin-bottom: 22px;
 }
 .pageName {
   width: 100%;
@@ -436,13 +474,34 @@ input {
 .desc {
   color: #66707a;
 }
+.cartImg {
+  display: flex;
+  margin-top: 59px;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: center;
+}
+.myAccount {
+  margin-top: 73px;
+  max-width: 375px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 0px;
+  padding-top: 10px;
+  background-color: white;
+  align-items: center;
+}
 @media (max-width: 480px) {
   .bookInTopOfWeek,
   .vendorDetails {
     max-height: none;
   }
 }
-
 @media (max-width: 400px) {
   .carousel-item.active {
     width: 140px;
@@ -468,6 +527,7 @@ input {
   .AllBooks {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 83px;
   }
   .dot.active {
     margin-top: 30px;

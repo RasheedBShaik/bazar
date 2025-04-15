@@ -4,6 +4,23 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   return (
     <div className="container3">
+      <div className="homeHead">
+        <div className="headhome">Cart</div>
+      </div>
+      <div className="cartImg">
+        <img
+          style={{ aspectRatio: "1/1", width: "100%", maxWidth: "11.25rem" }}
+          src="images/cartpage/Group (2).png"
+          alt=""
+        />
+        <div
+          style={{
+            marginTop: "1.5rem",
+            fontSize: "18px",
+          }}>
+          There is no products
+        </div>
+      </div>
       <div className="bottomBar">
         {/* Home */}
         <Link to="/home" className="bottomBarItem">
