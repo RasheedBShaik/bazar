@@ -521,10 +521,12 @@ label {
   font-size: 14px;
 }
 .userDetails {
+  border: none;
   max-width: 327px;
   width: 100%;
   padding: 12px 16px;
   background-color: #faf9fd;
+  border-radius: 8px;
 }
 @media (max-width: 480px) {
   .bookInTopOfWeek,

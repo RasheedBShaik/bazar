@@ -114,7 +114,11 @@ const SignIn = () => {
                 />
                 <img
                   className="eye-icon"
-                  src="images/signin/Password-Outline.png"
+                  src={
+                    showPassword
+                      ? "images/signin/eye 1.png"
+                      : "images/signin/eye-off 1.png"
+                  }
                   alt="Toggle Password"
                   onClick={() => setShowPassword((prev) => !prev)}
                 />

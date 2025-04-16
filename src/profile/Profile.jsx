@@ -6,6 +6,7 @@ const Profile = () => {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [userKey, setUserKey] = useState(null);
 
   useEffect(() => {
@@ -93,15 +94,27 @@ const Profile = () => {
           />
         </div>
 
-        <div>
+        <div className="password">
           <label>Password</label>
-          <br />
-          <input
-            className="userDetails"
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="eyeContainer">
+            <input
+              className="input"
+              type={showPassword ? "text" : "password"}
+              placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <img
+              className="eye-icon"
+              src={
+                showPassword
+                  ? "images/signin/eye 1.png"
+                  : "images/signin/eye-off 1.png"
+              }
+              alt="Toggle Password"
+              onClick={() => setShowPassword((prev) => !prev)}
+            />
+          </div>
         </div>
       </div>
 
