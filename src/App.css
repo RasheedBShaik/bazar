@@ -252,12 +252,12 @@ input {
 .carousel-item.active {
   display: flex;
   gap: 70px;
-  max-width: 375px;
-  width: 375px;
+  justify-content: center;
   aspect-ratio: 327/146;
 }
 .carousel-item {
   display: none;
+  transition: opacity 0.5s ease;
 }
 .Homecarousel {
   margin-top: 49px;
@@ -271,9 +271,7 @@ input {
   justify-content: space-around;
   margin-left: 23px;
 }
-.HomecarouselImage {
-  margin-right: 23px;
-}
+
 .carouselOffer {
   font-size: 20px;
   font-weight: bold;
@@ -281,7 +279,7 @@ input {
 .carouselOrder {
   cursor: pointer;
   background-color: #54408c;
-  width: fit-content;
+  width: 150px;
   padding: 8px 24px;
   color: white;
   border-radius: 48px;
@@ -483,7 +481,8 @@ input {
 }
 .myAccount {
   margin-top: 73px;
-  max-width: 375px;
+  /* max-width: 375px; */
+  /* margin-bottom: 100px; */
   width: 100%;
   font-size: 20px;
   font-weight: bold;
@@ -495,6 +494,37 @@ input {
   padding-top: 10px;
   background-color: white;
   align-items: center;
+}
+.pageContent {
+  max-width: 327px;
+  width: 100%;
+  margin-top: 150px;
+}
+
+.saveChanges {
+  cursor: pointer;
+  background-color: #54408c;
+  width: 100%;
+  max-width: 327px;
+  height: 48px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 48px;
+  margin-bottom: 24px;
+  margin-top: 100px;
+  border: none;
+}
+label {
+  font-size: 14px;
+}
+.userDetails {
+  max-width: 327px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #faf9fd;
 }
 @media (max-width: 480px) {
   .bookInTopOfWeek,
@@ -514,7 +544,6 @@ input {
     padding: 2px 3px;
     margin-top: 30px;
     text-align: center;
-    width: 140px;
   }
   .HomeBody {
     margin-top: 20px;

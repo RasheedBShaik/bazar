@@ -5,7 +5,7 @@ import axios from "axios";
 const SignIn = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,7 +16,7 @@ const SignIn = () => {
     axios
       .get("https://bazar-7752a-default-rtdb.firebaseio.com/User.json")
       .then((response) => {
-        setData(response.data);
+        setData(response.data || {});
         setLoading(false);
       })
       .catch((error) => {
@@ -24,18 +24,6 @@ const SignIn = () => {
         setLoading(false);
       });
   }, []);
-
-  const goBack = () => {
-    navigate("/");
-  };
-
-  const goToSignUp = () => {
-    navigate("/signup");
-  };
-
-  const forgetpass = () => {
-    navigate("/forgetpass");
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,29 +33,49 @@ const SignIn = () => {
       return;
     }
 
-    const user = Object.values(data).find(
-      (user) => user.email === email && user.password === password,
-    );
+    let foundUser = null;
+    let foundKey = null;
 
-    if (user) {
-      console.log("User authenticated:", user);
+    for (const [key, user] of Object.entries(data)) {
+      if (user.email === email && user.password === password) {
+        foundUser = user;
+        foundKey = key;
+        break;
+      }
+    }
+
+    if (foundUser && foundKey) {
+      console.log("User authenticated:", foundUser);
+
+      // Save key and user info to localStorage
+      localStorage.setItem("userKey", foundKey);
+      localStorage.setItem("userName", foundUser.name);
+      localStorage.setItem("userEmail", foundUser.email);
+
       navigate("/home");
     } else {
       setError("Invalid email or password.");
     }
   };
 
+  const goBack = () => navigate("/");
+  const goToSignUp = () => navigate("/signup");
+  const forgetpass = () => navigate("/forgetpass");
+
   return (
     <div className="container3">
       {loading ? (
-        <div>Loading...</div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          Loading...
+        </div>
       ) : (
         <>
-          {error && (
-            <div style={{ color: "red" }} className="error">
-              {error}
-            </div>
-          )}
+          {error && <div style={{ color: "red" }}>{error}</div>}
 
           <div className="container3Head">
             <img
@@ -80,12 +88,11 @@ const SignIn = () => {
               <div className="greetingHeading">Welcome Back 👋</div>
               <span>Sign in to your account</span>
             </div>
-            <br />
           </div>
 
           <form onSubmit={handleSubmit}>
             <div className="email">
-              <div>Email</div>
+              <label>Email</label>
               <input
                 className="input"
                 type="text"
@@ -94,8 +101,9 @@ const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
             <div className="password">
-              <div>Password</div>
+              <label>Password</label>
               <div className="eyeContainer">
                 <input
                   className="input"
@@ -107,33 +115,38 @@ const SignIn = () => {
                 <img
                   className="eye-icon"
                   src="images/signin/Password-Outline.png"
-                  alt="Toggle Password Visibility"
+                  alt="Toggle Password"
                   onClick={() => setShowPassword((prev) => !prev)}
                 />
               </div>
             </div>
+
             <div className="forgetPassword" onClick={forgetpass}>
               Forget Password
             </div>
-            <button style={{ border: "none" }} type="submit" className="login">
+
+            <button type="submit" className="login" style={{ border: "none" }}>
               Login
             </button>
+
             <div className="signUp">
               <span>Don’t have an account?</span>
               <span className="signupcolor" onClick={goToSignUp}>
                 Sign Up
               </span>
             </div>
+
             <div className="OrWith">
               <span>Or with</span>
             </div>
+
             <div className="otherApps">
               <div className="otherAppsContent">
-                <img src="images/signin/Google-logo.png" alt="Google Logo" />
+                <img src="images/signin/Google-logo.png" alt="Google" />
                 <div>Sign in with Google</div>
               </div>
               <div className="otherAppsContent">
-                <img src="images/signin/Apple-logo.png" alt="Apple Logo" />
+                <img src="images/signin/Apple-logo.png" alt="Apple" />
                 <div>Sign in with Apple</div>
               </div>
             </div>

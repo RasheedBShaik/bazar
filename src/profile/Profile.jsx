@@ -1,23 +1,117 @@
-// import { useNavigate } from "react-router-dom";
-// import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Profile = () => {
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userKey, setUserKey] = useState(null);
+
+  useEffect(() => {
+    const storedKey = localStorage.getItem("userKey");
+    if (!storedKey) {
+      console.error("No user key found in localStorage");
+      return;
+    }
+
+    setUserKey(storedKey);
+    loadUserData(storedKey);
+  }, []);
+
+  // Load data from Firebase
+  const loadUserData = (key) => {
+    const userUrl = `https://bazar-7752a-default-rtdb.firebaseio.com/User/${key}.json`;
+    axios
+      .get(userUrl)
+      .then((response) => {
+        const data = response.data;
+        if (data) {
+          setName(data.name || "");
+          setMail(data.email || "");
+          setPassword(data.password || "");
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to load user data:", error);
+      });
+  };
+
+  // Save updated data to Firebase
+  const handleSaveChanges = () => {
+    if (!userKey) {
+      alert("User key not found.");
+      return;
+    }
+
+    const updatedUser = {
+      name,
+      email: mail,
+      password,
+    };
+
+    const userUrl = `https://bazar-7752a-default-rtdb.firebaseio.com/User/${userKey}.json`;
+
+    axios
+      .patch(userUrl, updatedUser)
+      .then(() => {
+        console.log("User data updated successfully");
+        alert("Changes saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Failed to update user data:", error);
+        alert("Failed to save changes");
+      });
+  };
+
   return (
     <div className="container3">
       <div className="homeHead">
         <div className="headhome">Profile</div>
       </div>
 
+      <div className="pageContent">
+        <div>
+          <label>Name</label>
+          <br />
+          <input
+            className="userDetails"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label>Email</label>
+          <br />
+          <input
+            className="userDetails"
+            type="text"
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label>Password</label>
+          <br />
+          <input
+            className="userDetails"
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
+
       <div className="myAccount">My Account</div>
-      <button
-        style={{ border: "none", marginTop: "200px" }}
-        type="submit"
-        className="login">
+
+      <button type="submit" className="saveChanges" onClick={handleSaveChanges}>
         Save Changes
       </button>
+
       <div className="bottomBar">
-        {/* Home */}
         <Link to="/home" className="bottomBarItem">
           <div className="bottomBarItemHome">
             <img src={"images/homepage/bottombar/Home-Fill.png"} alt="Home" />
@@ -25,7 +119,6 @@ const Profile = () => {
           </div>
         </Link>
 
-        {/* Category */}
         <Link to="/category" className="bottomBarItem">
           <div className="bottombarItemCategory">
             <img
@@ -36,15 +129,13 @@ const Profile = () => {
           </div>
         </Link>
 
-        {/* Cart */}
-        <Link to={"/cart"} className="bottomBarItem">
+        <Link to="/cart" className="bottomBarItem">
           <div className="bottombarItemCart">
             <img src={"images/homepage/bottombar/Cart-Fill.png"} alt="Cart" />
             <div style={{ color: "#A6A6A6" }}>Cart</div>
           </div>
         </Link>
 
-        {/* Profile */}
         <Link to="/profile" className="bottomBarItem">
           <div className="bottombarItemProfile">
             <img

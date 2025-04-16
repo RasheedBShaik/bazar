@@ -1,33 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSwipeable } from "react-swipeable";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const updateCarousel = (newIndex) => {
+    const items = document.querySelectorAll(".carousel-item");
+    items[currentIndex]?.classList.remove("active");
+    items[newIndex]?.classList.add("active");
+    setCurrentIndex(newIndex);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      const items = document.querySelectorAll(".carousel-item");
+      const nextIndex = (currentIndex + 1) % items.length;
+      updateCarousel(nextIndex);
+    },
+    onSwipedRight: () => {
+      const items = document.querySelectorAll(".carousel-item");
+      const prevIndex = (currentIndex - 1 + items.length) % items.length;
+      updateCarousel(prevIndex);
+    },
+    trackMouse: true,
+  });
+
   useEffect(() => {
     const items = document.querySelectorAll(".carousel-item");
-    let index = 0;
-
     const interval = setInterval(() => {
-      items[index].classList.remove("active");
-
-      index = (index + 1) % items.length;
-      items[index].classList.add("active");
-
-      // Update the state for dots
-      setCurrentIndex(index);
+      const nextIndex = (currentIndex + 1) % items.length;
+      updateCarousel(nextIndex);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
     <div className="container3">
       <div className="homeHead">
         <div className="headhome">Home</div>
       </div>
+
       {/* Carousel */}
-      <div className="Homecarousel">
+      <div {...handlers} className="Homecarousel">
         <div className="carousel-item active">
           <div className="HomecarouselContent">
             <div className="carouselOffer">Special Offer</div>
@@ -67,6 +83,7 @@ const Home = () => {
           />
         </div>
       </div>
+
       {/* Dots */}
       <div className="dots-wrapper">
         {[0, 1, 2].map((dot, index) => (
@@ -77,6 +94,8 @@ const Home = () => {
           </span>
         ))}
       </div>
+
+      {/* Home Body */}
       <div className="HomeBody">
         <div className="HomeHeading">
           <div>Top of Week</div>
@@ -84,6 +103,7 @@ const Home = () => {
             See all
           </Link>
         </div>
+
         <div className="AllBooks">
           <div className="book">
             <img src="images/homepage/books/carouselBook2.png" alt="" />
@@ -115,11 +135,9 @@ const Home = () => {
           <div className="vendor">
             <img src="images/homepage/vendors/vendor1.png" alt="" />
           </div>
-
           <div className="vendor">
             <img src="images/homepage/vendors/vendor2.png" alt="" />
           </div>
-
           <div className="vendor">
             <img src="images/homepage/vendors/vendor3.png" alt="" />
           </div>
@@ -131,6 +149,7 @@ const Home = () => {
             See all
           </Link>
         </div>
+
         <div className="AllAuthors">
           <div className="author">
             <img src="images/homepage/authors/author1.png" alt="" />
@@ -151,74 +170,37 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* bottombar */}
+
+      {/* Bottom Bar */}
       <div className="bottomBar">
-        {/* Home */}
         <Link to="/home" className="bottomBarItem">
-          <div className="bottomBarItem">
-            <div className="bottomBarItemHome">
-              <img
-                src={"images/homepage/bottombar/Home-Fill2.png"}
-                alt="Home"
-              />
-              <div
-                style={{
-                  color: "#54408C",
-                }}>
-                Home
-              </div>
-            </div>
+          <div className="bottomBarItemHome">
+            <img src="images/homepage/bottombar/Home-Fill2.png" alt="Home" />
+            <div style={{ color: "#54408C" }}>Home</div>
           </div>
         </Link>
 
-        {/* Category */}
         <Link to="/category" className="bottomBarItem">
-          <div className="bottomBarItem">
-            <div className="bottombarItemCategory">
-              <img
-                src={"images/homepage/bottombar/Menu-Fill.png"}
-                alt="Category"
-              />
-              <div
-                style={{
-                  color: "#A6A6A6",
-                }}>
-                Category
-              </div>
-            </div>
+          <div className="bottombarItemCategory">
+            <img src="images/homepage/bottombar/Menu-Fill.png" alt="Category" />
+            <div style={{ color: "#A6A6A6" }}>Category</div>
           </div>
         </Link>
 
-        {/* Cart */}
         <Link to="/cart" className="bottomBarItem">
-          <div className="bottomBarItem">
-            <div className="bottombarItemCart">
-              <img src={"images/homepage/bottombar/Cart-Fill.png"} alt="Cart" />
-              <div
-                style={{
-                  color: "#A6A6A6",
-                }}>
-                Cart
-              </div>
-            </div>
+          <div className="bottombarItemCart">
+            <img src="images/homepage/bottombar/Cart-Fill.png" alt="Cart" />
+            <div style={{ color: "#A6A6A6" }}>Cart</div>
           </div>
         </Link>
 
-        {/* Profile */}
         <Link to="/profile" className="bottomBarItem">
-          <div className="bottomBarItem">
-            <div className="bottombarItemProfile">
-              <img
-                src={"images/homepage/bottombar/Profile-Fill.png"}
-                alt="Profile"
-              />
-              <div
-                style={{
-                  color: "#A6A6A6",
-                }}>
-                Profile
-              </div>
-            </div>
+          <div className="bottombarItemProfile">
+            <img
+              src="images/homepage/bottombar/Profile-Fill.png"
+              alt="Profile"
+            />
+            <div style={{ color: "#A6A6A6" }}>Profile</div>
           </div>
         </Link>
       </div>
